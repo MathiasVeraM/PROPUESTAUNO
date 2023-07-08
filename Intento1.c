@@ -1,6 +1,7 @@
 #include <stdio.h>  //se incluye la biblioteca stdio.h
 #include <stdlib.h> //Se incluye la biblioteca stdlib.h para usar puts y gets, leer y escribir cadenas de caracteres.
 #include <time.h> //Se incluye la biblioteca time.h para añadir la fecha y hora de ingreso de datos.
+
 int main(){
     //inicializacion de la estructura Paciente
     struct Paciente{
