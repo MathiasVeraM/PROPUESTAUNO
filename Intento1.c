@@ -18,11 +18,13 @@ int main(){
     }a;
 
     FILE *archivo; //Definicion de la variable archivo como tipo FILE
-    archivo = fopen("DatosPaciente.txt","a"); //abrir el archivo para que se ingresen datos en el archivo plano de manera continua, con w es solo una vez
+    archivo = fopen("DatosPaciente.txt","a+"); //abrir el archivo para que se ingresen datos en el archivo plano de manera continua, con w es solo una vez
 
     int opcion = 0, paciente = 0; //Esto es para el menu, para el ingreso de la opcion y numero de pacientes por parte del usuario
     float masa; //variable para almacenar la masa corporal del paciente
     time_t tiempoActual; //Variable de tipo time para tener la hora y fecha de ingreso de datos
+
+    long posicion;
 
     do{ //Bucle do while para el menu
         printf("Menu: \n\n 1.Ingreso de Datos de Pacientes\n 2.Buscar Datos de Paciente\n 3.Borrar un dato en la Base de Datos\n 4.Salir\n");
@@ -71,6 +73,55 @@ int main(){
                 }
                 break;
         case 2: //Aquí va la opcion de busqueda de datos
+                archivo = fopen("DatosPaciente.txt","r+");
+                char datoBuscar[20];
+                gets(datoBuscar);
+                char nombreBuscado[20];
+                int edadBuscado;
+                int pesoBuscado;
+                float alturaBuscado;
+                float temperaturaBuscado;
+                int presionDBuscado;
+                int presionSBuscado;
+                int pulsoBuscado;
+                int respiracionBuscado;
+                float masacBuscado;
+
+                while(!feof(archivo)){
+                        posicion = ftell(archivo);
+                        fscanf(archivo, "%s %d %d %f %f %d %d %d %d %f", &nombreBuscado,&edadBuscado,&pesoBuscado,&alturaBuscado,&temperaturaBuscado, &presionSBuscado, &presionDBuscado, &pulsoBuscado, &respiracionBuscado, &masacBuscado);
+                        if(strcmp(datoBuscar,nombreBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,edadBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,pesoBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,alturaBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,temperaturaBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,presionSBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,presionDBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,pulsoBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,respiracionBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,masacBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }
+                }
                 break;
         case 3: //Aqui va la opcion de borrar el dato encontrado en la base de datos
                 break;
