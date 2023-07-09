@@ -68,19 +68,7 @@ int main(){
 
                         fprintf(archivo, "%d:%d:%d\t", miTiempo->tm_hour, miTiempo->tm_min, miTiempo->tm_sec); //Para que imprima la hora en la que se inscribieron los datos
                         //Funciones fprintf para escribir en el archivo los datos ingresados por el usuario
-                        fprintf(archivo,"%s; ",a.nombre);
-                        fprintf(archivo,"%d; ",a.edad);
-                        fprintf(archivo,"%d; ",a.peso); 
-                        fprintf(archivo,"%.2f; ",a.altura);
-                        fprintf(archivo,"%.2f; ",a.temperatura);
-                        fprintf(archivo,"%d; ",a.presionS);
-                        fprintf(archivo,"%d; ",a.presionD);
-                        fprintf(archivo,"%d; ",a.pulso);
-                        fprintf(archivo,"%d; ",a.respiracion);
-                        fprintf(archivo,"%.3f; ",a.masac);
-
-                        fprintf(archivo,"\n"); //Para que despues de cada ingreso de datos haya un salto de linea
-
+                        fprintf(archivo, "\n%s; %d; %d; %.2f; %.2f; %d; %d; %d; %d; %.3f", a.nombre, a.edad, a.peso, a.altura, a.temperatura, a.presionS, a.presionD, a.pulso, a.respiracion, a.masac);
                         fflush(stdin); //Para borrar los datos del caché de ingreso por consola, scanf y gets, para poder ingresar los otros datos y que no falle
                 }
                 break;
