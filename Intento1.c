@@ -1,5 +1,6 @@
 #include <stdio.h>  //se incluye la biblioteca stdio.h
 #include <stdlib.h> //Se incluye la biblioteca stdlib.h para usar puts y gets, leer y escribir cadenas de caracteres.
+#include <string.h>
 #include <time.h> //Se incluye la biblioteca time.h para añadir la fecha y hora de ingreso de datos.
 
 int main(){
@@ -25,6 +26,17 @@ int main(){
     time_t tiempoActual; //Variable de tipo time para tener la hora y fecha de ingreso de datos
 
     long posicion;
+    char datoBuscar;
+    char nombreBuscado[20];
+    int edadBuscado;
+    int pesoBuscado;
+    float alturaBuscado;
+    float temperaturaBuscado;
+    int presionDBuscado;
+    int presionSBuscado;
+    int pulsoBuscado;
+    int respiracionBuscado;
+    float masacBuscado;
 
     do{ //Bucle do while para el menu
         printf("Menu: \n\n 1.Ingreso de Datos de Pacientes\n 2.Buscar Datos de Paciente\n 3.Borrar un dato en la Base de Datos\n 4.Salir\n");
@@ -73,6 +85,35 @@ int main(){
                 }
                 break;
         case 2: //Aquí va la opcion de busqueda de datos
+                printf("Por favor ingrese el dato que desea buscar: ");
+                scanf("%s", &datoBuscar);
+                while(!feof(archivo)){
+                        posicion = ftell(archivo);
+                        fscanf(archivo, "%s %d %d %d %d %d %d ", &nombreBuscado,&edadBuscado,&pesoBuscado, &presionSBuscado, &presionDBuscado, &pulsoBuscado, &respiracionBuscado);
+                        if(strcmp(datoBuscar,nombreBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,edadBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,pesoBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,presionSBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,presionDBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,pulsoBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }else if(strcmp(datoBuscar,respiracionBuscado)==0){
+                                printf("%ld",posicion);
+                                break;
+                        }
+                }
+
                 break;
         case 3: //Aqui va la opcion de borrar el dato encontrado en la base de datos
                 break;
