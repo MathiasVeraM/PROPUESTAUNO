@@ -68,16 +68,7 @@ int main(){
 
                         fprintf(archivo, "%d:%d:%d\t", miTiempo->tm_hour, miTiempo->tm_min, miTiempo->tm_sec); //Para que imprima la hora en la que se inscribieron los datos
                         //Funciones fprintf para escribir en el archivo los datos ingresados por el usuario
-                        fprintf(archivo,"%s; ",a.nombre);
-                        fprintf(archivo,"%d; ",a.edad);
-                        fprintf(archivo,"%d; ",a.peso); 
-                        fprintf(archivo,"%.2f; ",a.altura);
-                        fprintf(archivo,"%.2f; ",a.temperatura);
-                        fprintf(archivo,"%d; ",a.presionS);
-                        fprintf(archivo,"%d; ",a.presionD);
-                        fprintf(archivo,"%d; ",a.pulso);
-                        fprintf(archivo,"%d; ",a.respiracion);
-                        fprintf(archivo,"%.3f; ",a.masac);
+                        fprintf(archivo, "%s; %d; %d; %.2f; %.2f; %d; %d; %d; %d; %.3f", a.nombre, a.edad, a.peso, a.altura, a.temperatura, a.presionS, a.presionD, a.pulso, a.respiracion, a.masac);
 
                         fprintf(archivo,"\n"); //Para que despues de cada ingreso de datos haya un salto de linea
 
@@ -85,35 +76,6 @@ int main(){
                 }
                 break;
         case 2: //Aquí va la opcion de busqueda de datos
-                printf("Por favor ingrese el dato que desea buscar: ");
-                scanf("%s", &datoBuscar);
-                while(!feof(archivo)){
-                        posicion = ftell(archivo);
-                        fscanf(archivo, "%s %d %d %d %d %d %d ", &nombreBuscado,&edadBuscado,&pesoBuscado, &presionSBuscado, &presionDBuscado, &pulsoBuscado, &respiracionBuscado);
-                        if(strcmp(datoBuscar,nombreBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,edadBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,pesoBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,presionSBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,presionDBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,pulsoBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }else if(strcmp(datoBuscar,respiracionBuscado)==0){
-                                printf("%ld",posicion);
-                                break;
-                        }
-                }
-
                 break;
         case 3: //Aqui va la opcion de borrar el dato encontrado en la base de datos
                 break;
