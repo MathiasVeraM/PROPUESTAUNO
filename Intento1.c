@@ -3,6 +3,43 @@
 #include <string.h>
 #include <time.h> //Se incluye la biblioteca time.h para añadir la fecha y hora de ingreso de datos.
 
+//Funcion borrarDatos, creada por Jean Luc Morales, no se logro realizar el commit correspondiente desde su cuenta
+void borrarDatos(char nombreBorrado[]){
+        FILE *archivo1;
+        archivo1 = fopen("DatosPaciente.txt", "r");
+        FILE *archivo2;
+        archivo2 = fopen("Arch2.txt", "a");
+        struct Paciente{
+                char nombre[30];
+         int edad;
+         int peso;
+         float altura;
+         float temperatura;
+         int presionD;
+         int presionS;
+         int pulso;
+         int respiracion;
+         float masac;
+        }a;
+        int encontrado = 0;
+        while(fscanf(archivo1, "%s; %d; %d; %.2f; %.2f; %d; %d; %d; %d; %.3f", a.nombre, &a.edad, &a.peso, &a.altura, 
+         &a.temperatura, &a.presionS, &a.presionD, &a.pulso, &a.respiracion, &a.masac) == 10){
+                if(strcmp(a.nombre, nombreBorrado) != 0){
+                        fprintf(archivo2, "%s; %d; %d; %.2f; %.2f; %d; %d; %d; %d; %.3f", a.nombre, a.edad, a.peso, a.altura, 
+                        a.temperatura, a.presionS, a.presionD, a.pulso, a.respiracion, a.masac);
+                }else{
+                        encontrado = 1;
+                }
+        }
+        fclose(archivo1);
+        fclose(archivo2);
+        remove("DatosPaciente.txt");
+        rename("Arch2.txt", "DatosPaciente.txt");
+        printf("El paciente ha sido eliminado.\n");
+}
+
+
+
 int main(){
     //inicializacion de la estructura Paciente
     struct Paciente{
@@ -78,6 +115,10 @@ int main(){
         case 2: //Aquí va la opcion de busqueda de datos
                 break;
         case 3: //Aqui va la opcion de borrar el dato encontrado en la base de datos
+                printf("Ingrese el nombre del paciente: ");
+                scanf("%s", &a.nombre);
+                borrarDatos(a.nombre);
+                fflush(stdin);
                 break;
         case 4: printf("\nSalio exitosamente del programa\n");
                 break;
